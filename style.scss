@@ -27,8 +27,23 @@ button {
   &.unSelected {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     border: solid 1px #489dff;
-    background-image: linear-gradient(to bottom, #292929 -31%, #000000), linear-gradient(to bottom, #000000, #000000);
-    
+    transition: .2s;
+
+    .button_inner{
+      &:before{
+        content: " ";
+        display: block;
+        position: absolute;
+        background-image: linear-gradient(to bottom, #292929 -31%, #000000), linear-gradient(to bottom, #000000, #000000);
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        transition: .2s;
+
+      }
+    }
+
     &:before {
       @include shineConst();
       background: rgba(255, 255, 255, 0.5);
@@ -49,7 +64,14 @@ button {
     &:hover {
       border: solid 1px #0048ab;
       background-image: none;
-      transition: 0.2s;
+      transition: .2s;
+      .button_inner{
+        &:before{
+          opacity: 0;
+          transition: .2s;
+
+        }
+      }
       &:before {
         transform: translateX(400px) skewX(-15deg);
         opacity: 0.6;
@@ -87,6 +109,7 @@ button {
 
   .col-1 {
     grid-column: 1/2;
+    z-index: 2;
     img {
       height: 44px;
       width: 44px;
@@ -100,6 +123,7 @@ button {
   }
 
   .col-2 {
+    z-index: 2;
     grid-column: 2/3;
     align-self: center;
     text-align: start;
@@ -117,6 +141,7 @@ button {
   }
 
   .col-3 {
+    z-index: 2;
     grid-column: 3/4;
     align-self: center;
     .plus {

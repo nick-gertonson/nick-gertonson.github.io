@@ -20,8 +20,22 @@ button.unSelected {
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   border: solid 1px #489dff;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+button.unSelected .button_inner:before {
+  content: " ";
+  display: block;
+  position: absolute;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(-31%, #292929), to(#000000)), -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000));
   background-image: linear-gradient(to bottom, #292929 -31%, #000000), linear-gradient(to bottom, #000000, #000000);
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 button.unSelected:before {
@@ -59,8 +73,14 @@ button.unSelected:after {
 button.unSelected:hover {
   border: solid 1px #0048ab;
   background-image: none;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+button.unSelected:hover .button_inner:before {
+  opacity: 0;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 button.unSelected:hover:before {
@@ -109,6 +129,7 @@ button .col-1 {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
+  z-index: 2;
 }
 
 button .col-1 img {
@@ -124,6 +145,7 @@ button .col-1 img.player {
 }
 
 button .col-2 {
+  z-index: 2;
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -145,6 +167,7 @@ button .col-2 .text {
 }
 
 button .col-3 {
+  z-index: 2;
   -ms-grid-column: 3;
   -ms-grid-column-span: 1;
   grid-column: 3/4;
