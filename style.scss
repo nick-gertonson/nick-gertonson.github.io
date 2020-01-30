@@ -1,0 +1,158 @@
+@mixin shineConst() {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transform: translateX(-100px) skewX(-15deg);
+}
+
+body {
+  background-color:#cccccc;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #000;
+  margin-bottom: 10px;
+
+  &:hover{
+    cursor: pointer;
+  }
+  
+  &.unSelected {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    border: solid 1px #489dff;
+    background-image: linear-gradient(to bottom, #292929 -31%, #000000), linear-gradient(to bottom, #000000, #000000);
+    
+    &:before {
+      @include shineConst();
+      background: rgba(255, 255, 255, 0.5);
+      width: 60px;
+      left: 0;
+      opacity: 0.5;
+      filter: blur(30px);
+    }
+    &:after {
+      @include shineConst();
+      background: rgba(255, 255, 255, 0.2);
+      width: 30px;
+      left: 30px;
+      opacity: 0;
+      filter: blur(5px);
+    }
+  
+    &:hover {
+      border: solid 1px #0048ab;
+      background-image: none;
+      transition: 0.2s;
+      &:before {
+        transform: translateX(400px) skewX(-15deg);
+        opacity: 0.6;
+        transition: 0.7s;
+      }
+      &:after {
+        transform: translateX(400px) skewX(-15deg);
+        opacity: 1;
+        transition: 0.7s;
+      }
+    }
+  }
+
+  &.selected {
+      background-color: rgba(0, 0, 0, 0.7);
+      &:hover{
+          background-color: rgba(0, 0, 0, 1);
+      }
+  }
+
+  &.modal {
+    background-color: #303030;
+    &:hover {
+        background-color: #222222;
+    }
+  }
+
+  .button_inner {
+    display: grid;
+    grid-template-columns: auto minmax(200px, auto) 50px;
+    grid-column-gap: 15px;
+    height: 44px;
+    width: 326px;
+  }
+
+  .col-1 {
+    grid-column: 1/2;
+    img {
+      height: 44px;
+      width: 44px;
+      &.player {
+        border-radius: 50px;
+        overflow: hidden;
+        background-color: white;
+        border: 1px solid white;
+      }
+    }
+  }
+
+  .col-2 {
+    grid-column: 2/3;
+    align-self: center;
+    text-align: start;
+
+    .text {
+      font-family: "Proxima Nova";
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 0.2px;
+      color: #ffffff;
+    }
+  }
+
+  .col-3 {
+    grid-column: 3/4;
+    align-self: center;
+    .plus {
+      width: 18px;
+      height: 18px;
+    }
+    .check {
+        width: 26px;
+        height: 20px;
+    }
+    .age{
+        color: white;
+        font-family: "Proxima Nova";
+        p{
+            margin: 0;
+        }
+        .label{
+            line-height: 1;
+            font-weight: 600;
+            color: #aaaaaa;
+            text-transform: uppercase;
+        }
+        .numeral{
+            line-height: 1;
+            font-size: 20px;
+            font-weight: 600;
+            color: #aaaaaa;
+            text-transform: uppercase;
+        }
+    }
+  }
+}
+
+
+div.selected{
+  img{
+    filter: grayscale(100%);
+  }
+}
